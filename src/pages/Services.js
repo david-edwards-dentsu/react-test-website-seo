@@ -44,7 +44,9 @@ function Services() {
     : `Our Services - Page ${currentPage} | Your Business Name`;
 
   // Generate canonical URL
-  const canonicalUrl = `https://www.yourdomain.com${location.pathname}${location.search}`;
+  const canonicalUrl = currentPage === 1
+    ? "https://www.yourdomain.com/services"
+    : `https://www.yourdomain.com${location.pathname}${location.search}`;
 
   return (
     <>
