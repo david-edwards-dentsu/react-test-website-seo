@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { useLocation } from 'react-router-dom';
 import Pagination from '../components/Pagination';
+
 function Services() {
+  const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const servicesPerPage = 3;
 
@@ -17,20 +20,38 @@ function Services() {
     { name: 'Service 9', description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.' },
   ];
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const page = parseInt(params.get('page')) || 1;
+    setCurrentPage(page);
+  }, [location]);
+
   // Get current services
   const indexOfLastService = currentPage * servicesPerPage;
   const indexOfFirstService = indexOfLastService - servicesPerPage;
   const currentServices = services.slice(indexOfFirstService, indexOfLastService);
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    const newUrl = `${window.location.pathname}?page=${pageNumber}`;
+    window.history.pushState({ page: pageNumber }, '', newUrl);
+  };
+
+  // Generate dynamic title
+  const pageTitle = currentPage === 1 
+    ? "Our Services | Your Business Name"
+    : `Our Services - Page ${currentPage} | Your Business Name`;
+
+  // Generate canonical URL
+  const canonicalUrl = `https://www.yourdomain.com${location.pathname}${location.search}`;
 
   return (
     <>
     <Helmet>
-        <title>Our Services | Your Business Name</title>
-        <meta name="description" content="Explore our core services and innovative solutions designed to empower your business and drive growth." />
-        <link rel="canonical" href="https://www.yourdomain.com/services" />
+        <title>{pageTitle}</title>
+        <meta name="description" content={`Explore our core services and innovative solutions designed to empower your business and drive growth. Page ${currentPage}`} />
+        <link rel="canonical" href={canonicalUrl} />
     </Helmet>
         <div className="space-y-16">
         <section className="bg-cover bg-center h-screen flex items-center" style={{backgroundImage: "url('https://picsum.photos/1920/1080?random=10')"}}>
