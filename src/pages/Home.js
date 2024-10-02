@@ -84,6 +84,21 @@ function Home() {
             </div>
         </section>
 
+        <section className="bg-gray-100 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold mb-8 text-center">Featured Video</h2>
+            
+            <iframe
+            src="https://www.youtube.com/embed/NpEaa2P7qZI"
+            title="YouTube video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-96"
+            ></iframe>
+            
+          </div>
+        </section>
+
         {/* New section for dynamic content */}
         <section className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
