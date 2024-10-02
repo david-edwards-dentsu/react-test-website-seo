@@ -60,9 +60,13 @@ function Contact() {
               { name: 'Instagram', url: 'https://instagram.com/yourprofile' },
               { name: 'LinkedIn', url: 'https://linkedin.com/in/yourprofile' }
             ].map((social, index) => (
-              <a key={index} href={social.url} className="text-gray-600 hover:text-black">
-                {social.name}   
-              </a>
+              <button
+                key={index}
+                onClick={() => window.open(social.url, '_blank')}
+                className="text-gray-600 hover:text-black"
+              >
+                {social.name}
+              </button>
             ))}
           </div>
         </div>
