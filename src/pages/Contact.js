@@ -1,35 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 function Contact() {
   return (
     <>
-    <Helmet>
-        <title>Contact Us | Your Business Name</title>
-        <meta name="description" content="Get in touch with our team. We're here to answer your questions and help your business succeed." />
-        <link rel="canonical" href="https://www.yourdomain.com/contact" />
-        {/* Add schema markup */}
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Your Business Name",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "123 Main Street",
-                "addressLocality": "City",
-                "addressRegion": "State",
-                "postalCode": "12345",
-                "addressCountry": "US"
-              },
-              "telephone": "(123) 456-7890",
-              "email": "info@example.com",
-              "openingHours": "Mo-Fr 09:00-17:00"
-            }
-          `}
-        </script>
-      </Helmet>
     <div className="space-y-16">
       <section className="bg-cover bg-center h-screen flex items-center" style={{backgroundImage: "url('https://picsum.photos/1920/1080?random=11')"}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,9 +64,13 @@ function Contact() {
               { name: 'Instagram', url: 'https://instagram.com/yourprofile' },
               { name: 'LinkedIn', url: 'https://linkedin.com/in/yourprofile' }
             ].map((social, index) => (
-              <a key={index} href={social.url} className="text-gray-600 hover:text-black">
-                {social.name}   
-              </a>
+              <button
+                key={index}
+                onClick={() => window.open(social.url, '_blank')}
+                className="text-gray-600 hover:text-black"
+              >
+                {social.name}
+              </button>
             ))}
           </div>
         </div>

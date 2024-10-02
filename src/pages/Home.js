@@ -1,30 +1,10 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import DynamicContent from '../components/DynamicContent';
 
 function Home() {
     
   return (
     <>
-        <Helmet>
-            <title>Welcome to Your Business | Your Business Name</title>
-            <meta name="description" content="Discover how our innovative solutions can transform your business and drive growth." />
-            <link rel="canonical" href="https://www.yourdomain.com/" />
-
-            {/* Open Graph tags */}
-            <meta property="og:title" content="Welcome to Your Business | Your Business Name" />
-            <meta property="og:description" content="Discover how our innovative solutions can transform your business and drive growth." />
-            <meta property="og:image" content="https://www.yourdomain.com/og-image.jpg" />
-            <meta property="og:url" content="https://www.yourdomain.com/" />
-            <meta property="og:type" content="website" />
-
-            {/* Twitter Card tags */}
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content="Welcome to Your Business | Your Business Name" />
-            <meta name="twitter:description" content="Discover how our innovative solutions can transform your business and drive growth." />
-            <meta name="twitter:image" content="https://www.yourdomain.com/twitter-image.jpg" />
-            
-        </Helmet>
         <div className="space-y-16">
         <section className="bg-cover bg-center h-screen flex items-center" style={{backgroundImage: "url('https://picsum.photos/1920/1080?random=1')"}}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
