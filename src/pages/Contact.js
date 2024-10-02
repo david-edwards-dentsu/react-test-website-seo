@@ -36,15 +36,19 @@ function Contact() {
           <div className="md:w-1/2 bg-gray-100 p-8 rounded-lg">
             <h2 className="text-3xl font-bold mb-4">Contact Information</h2>
             <p className="text-gray-600 mb-4">
-              123 Main Street<br />
-              City, State 12345<br />
-              Phone: (123) 456-7890<br />
-              Email: info@example.com
+              <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                <span itemProp="streetAddress">123 Main Street</span><br />
+                <span itemProp="addressLocality">City</span>, <span itemProp="addressRegion">State</span> <span itemProp="postalCode">12345</span><br />
+              </span>
+              Phone: <span itemProp="telephone">(123) 456-7890</span><br />
+              Email: <span itemProp="email">info@example.com</span>
             </p>
             <h3 className="text-xl font-semibold mb-2">Office Hours</h3>
             <p className="text-gray-600">
-              Monday - Friday: 9am - 5pm<br />
-              Saturday - Sunday: Closed
+              <span itemProp="openingHours" content="Mo-Fr 09:00-17:00">
+                Monday - Friday: 9am - 5pm<br />
+                Saturday - Sunday: Closed
+              </span>
             </p>
           </div>
         </div>
