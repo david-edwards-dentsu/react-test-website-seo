@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import DynamicContent from '../components/DynamicContent';
 
 function Home() {
-    
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
   return (
     <>
         <Helmet>
@@ -102,6 +103,32 @@ function Home() {
                 Get Started
             </button>
             </div>
+        </section>
+
+        <section className="bg-gray-100 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold mb-8 text-center">Featured Video</h2>
+            <div className="relative w-full h-96">
+              {!isVideoPlaying ? (
+                <>
+                  <img
+                    src="https://img.youtube.com/vi/NpEaa2P7qZI/maxresdefault.jpg"
+                    alt="Video thumbnail"
+                    className="w-full h-full object-cover cursor-pointer"
+                    onClick={() => setIsVideoPlaying(true)}
+                  />
+                </>
+              ) : (
+                <iframe
+                  src="https://www.youtube.com/embed/NpEaa2P7qZI?autoplay=1"
+                  title="YouTube video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              )}
+            </div>
+          </div>
         </section>
 
         {/* New section for dynamic content */}
